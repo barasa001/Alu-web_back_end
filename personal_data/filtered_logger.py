@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 ''' Description: Regex-ing - Write a function called filter_datum that returns
                  the log message obfuscated:
     Arguments:
@@ -19,4 +20,4 @@ import re
 from typing import List
 
 def filter_datum(fields: List[str], redaction: str, message: str, separator: str) -> str:
-    return re.sub(fr'(?<=\{separator}|^)({"|".join(fields)})=\S+?(?=\{separator}|$)', f'{redaction}', message)
+        return re.sub(fr'(?:(?<=\{separator})|^)({"|".join(fields)})=\S+?(?=\{separator}|$)', f'{redaction}', message)
