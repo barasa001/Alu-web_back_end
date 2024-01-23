@@ -16,6 +16,7 @@
 ''' 0. Regex-ing '''
 
 import re
+from typing import List
 
-def filter_datum(fields, redaction, message, separator):
+def filter_datum(fields: List[str], redaction: str, message: str, separator: str) -> str:
     return re.sub(fr'(?<=\{separator}|^)({"|".join(fields)})=\S+?(?=\{separator}|$)', f'{redaction}', message)
