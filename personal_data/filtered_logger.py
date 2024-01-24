@@ -17,7 +17,27 @@
 ''' 0. Regex-ing '''
 
 import re
-from typing import List
 
-def filter_datum(fields: List[str], redaction: str, message: str, separator: str) -> str:
-        return re.sub(fr'(?:(?<=\{separator})|^)({"|".join(fields)})=\S+?(?=\{separator}|$)', f'{redaction}', message)
+def filter_datum(
+    fields: list[str],
+    redaction: str,
+    message: str,
+    separator: str,
+) -> str:
+  """
+  Filters a log message by obfuscating specific fields with a redaction string.
+
+  Args:
+      fields: A list of strings representing the fields to obfuscate.
+      redaction: The string to replace the field values with.
+      message: The log message to filter.
+      separator: The character separating fields in the log message.
+
+  Returns:
+      The obfuscated log message.
+  """
+  return re.sub(
+      fr'(?<=\{separator}|^)({"|".join(fields)})=.+?(?=\{separator}|$)',
+      fr'\1={redaction}',
+      message,
+  )
