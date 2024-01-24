@@ -43,8 +43,9 @@ def get_db() -> connection.MYSQLConnection:
         host=db_host,
         database=db_name)
     return connector
-'''
 
+
+'''
 def get_logger() -> logging.Logger:
     """ Returns a logging.Logger object """
     logger = logging.getLogger("user_data")
@@ -71,6 +72,7 @@ def filter_datum(fields: List[str], redaction: str, message: str,
         message = re.sub(f'{field}=(.*?){separator}',
                          f'{field}={redaction}{separator}', message)
     return message
+
 
 '''
 def main() -> None:
