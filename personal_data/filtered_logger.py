@@ -11,6 +11,7 @@ import mysql.connector
 
 PII_FIELDS = ("name", "email", "phone", "ssn", "password")
 
+
 def filter_datum(fields: List[str], redaction: str,
                  message: str, separator: str) -> str:
     """ Returns a log message obfuscated """
@@ -18,6 +19,8 @@ def filter_datum(fields: List[str], redaction: str,
         message = re.sub(f'{f}=.*?{separator}',
                          f'{f}={redaction}{separator}', message)
     return message
+
+
 def get_logger() -> logging.Logger:
     """ Returns a Logger Object """
     logger = logging.getLogger("user_data")
@@ -49,9 +52,11 @@ class RedactingFormatter(logging.Formatter):
     REDACTION = "***"
     FORMAT = "[HOLBERTON] %(name)s %(levelname)s %(asctime)-15s: %(message)s"
     SEPARATOR = ";"
+
     def __init__(self, fields: List[str]):
         super(RedactingFormatter, self).__init__(self.FORMAT)
         self.fields = fields
+
     def format(self, record: logging.LogRecord) -> str:
         """ Filters values in incoming log records using filter_datum """
         record.msg = filter_datum(self.fields, self.REDACTION,
