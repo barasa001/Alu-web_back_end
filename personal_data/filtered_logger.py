@@ -43,9 +43,9 @@ def get_db() -> connection.MYSQLConnection:
         host=db_host,
         database=db_name)
     return connector
-
-
 '''
+
+
 def get_logger() -> logging.Logger:
     """ Returns a logging.Logger object """
     logger = logging.getLogger("user_data")
