@@ -1,5 +1,5 @@
 const sinon = require('sinon');
-const displayMessage = require('./0-console');
+const displayMessage = require('../0-console');
 
 describe('displayMessage', () => {
   it('should print the message to the console', () => {
