@@ -1,5 +1,5 @@
 const sinon = require('sinon');
-const displayMessage = require('./0-console');
+const displayMessage = require('../0-console');
 const assert = require('assert');
 
 describe('0-main.js', () => {
