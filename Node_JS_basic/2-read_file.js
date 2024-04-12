@@ -23,7 +23,7 @@ function countStudents(path) {
     }
   }
 
-  delete fields.field;
+  delete fields.field,
 
   for (const key of Object.keys(fields)) {
     console.log(
